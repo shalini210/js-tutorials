@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function checkResult()
+        {
+            let hresult = document.getElementById("hresult")
+            let txtname = document.getElementById("txtname");
+            let txtphysics = document.getElementById("txtphysics")
+            let txtchemistry = document.getElementById("txtchemistry")
+            
+            let txtMaths = document.getElementById("txtMaths")
+            let name = txtname.value
+            let pmarks = parseInt(txtphysics.value);
+            let cmarks = parseInt(txtchemistry.value)
+            let mmarks = parseInt(txtMaths.value)
+            
+            let msg = "";
+            let cname = "";
+            if(pmarks>=35 && cmarks>=35 &&mmarks>=35)
+            {
+                let avg = (pmarks+cmarks+mmarks)/3
+                if(avg>=60)
+               {
+                msg = `congrates ${name} you Passed in Ist Division` 
+                cname="green"
+
+                }
+                else if(avg>=45)
+                {
+                    msg = `congrates ${name} you Passed in IInd Division` 
+                cname="greenyellow"
+                }
+                else{
+                    msg = `congrates ${name} you Passed in IIIrd Division` 
+                cname="orange"
+                }
+
+            }
+            else
+            {
+                msg = `sorry ${name} you are fail`
+                cname = "red"
+            }            
+            hresult.innerHTML = msg ;
+            hresult.style.color = cname
+        }
+    </script>
+</head>
+<body>
+    <p>
+        Enter Name : <input type="text" id="txtname">
+    </p>
+    <p>
+        physics : <input type="number" id="txtphysics" >
+    </p>
+    <p>
+        Chemistry : <input type="number" id="txtchemistry">
+    </p>
+    <p>
+        MAths : <input type="number" id="txtMaths">
+    </p>
+    <input type="button" value="Show result " onclick="checkResult()">
+    <h1 id="hresult">
+
+    </h1>
+
+</body>
+</html>

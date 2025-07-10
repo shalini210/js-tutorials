@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fun1()
+        {
+var txtname = document.getElementById("txtname")            
+var txtage = document.getElementById("txtage")     
+var presult = document.getElementById("presult")
+let age = parseInt(txtage.value)
+let msg = ""
+let colorname ="";
+if(age>=18)
+{
+    msg = "you are eligible to vote"
+    colorname = "green"
+}
+else
+{
+    msg = "not eligible"
+    colorname = "red"
+}
+presult.innerHTML = msg ;
+presult.style.color = colorname
+        }
+    </script>
+</head>
+<body>
+    <p style="background-color: gainsboro;">
+        Enter your name : <input type="text" id="txtname">
+    </p>
+    <p style="background-color: gainsboro;">
+        Enter your age : <input type="text" id="txtage">
+    </p>
+    <input type="button" value="Show msg " onclick="fun1()">
+    <p id="presult">
+
+    </p>
+    
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script>
+        function fun1(op)
+        {
+            var txta = document.getElementById("txta")
+            var txtb = document.getElementById("txtb")
+            let a = parseInt(txta.value);
+            let b =  parseInt(txtb.value);
+            let msg =""
+            let c = a+b;
+            msg =`sum in ${c}`
+            alert(msg)
+        }
+    </script>
+</head>
+<body>
+
+
+<p>
+    enter name: <input type="text">
+
+</p>
+<p>
+    enter units consumed : <input type="text" name="" id="">
+</p>
+1=49   : 5rs / units
+50-99   :7
+100 + :10 
+<input value="getbill" type="button"/>
+dear user'sname your bill nfor units is bill 
+    <p>---------------------</p>
+    <p>
+        Enter a : <input type="text" id="txta">
+    </p>
+    
+    <p>
+        Enter b : <input type="text" id="txtb">
+    </p>
+    <input type="button" value="+" onclick="fun1('+')" class="btncalc" style="width: 50px;">
+    <input type="button" value="-" onclick="fun1('-')" class="btncalc" style="width: 50px;">
+    <input type="button" value="*" onclick="fun1('*')" class="btncalc" style="width: 50px;">
+    <input type="button" value="/" onclick="fun1('/')" class="btncalc" style="width: 50px;">
+</body>
+</html>
