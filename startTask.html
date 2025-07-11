@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .d
+        {
+            margin-top: 15%;margin-left:40%;font-size: 50px;background-color: yellowgreen;
+    color: blueviolet;border:none;
+    position:absolute;
+    width:250px;
+    text-align: center;
+        }
+    </style>
+    <script>
+        function timerfun()
+        {
+            var ptimer = document.getElementById("ptimer")
+            var btnstart = document.getElementById("btnstart")
+            btnstart.style.display = "none"
+            count = 10;
+             ptimer.innerHTML=count
+            let i = setInterval(()=>
+        {   
+            count --;
+            
+            if(count ==0)
+        {
+            ptimer.innerHTML = "TIME UP"
+            clearInterval(i)
+        }
+        else{
+            ptimer.innerHTML = count ;
+        }
+            
+        },1000)
+        }
+    </script>
+</head>
+<body>
+    <p class="d" id="ptimer">10</p>
+    <input type="button" value="Start" onclick="timerfun()"
+     class="d" id="btnstart">
+</body>
+</html>
