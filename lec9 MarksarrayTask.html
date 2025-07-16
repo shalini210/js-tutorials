@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        let marks = []
+        let marks = [12,58,693,15,15]
+        let newmarks = marks.map((m)=>((m*0.05)+m))
+        console.log(newmarks)
         function addMarks()
         {
             //add new marks to marks array
@@ -21,6 +23,15 @@
         }
         function Minmarks()
         {
+            let minmarks = marks[0];
+                for(i=1;i<marks.length;i++)
+            {
+                    if(minmarks>marks[i])
+                    {
+                        minmarks = marks[i] 
+                    }
+                }
+        document.getElementById("hresult").innerHTML = " min element is "+minmarks
             //show minimum marks in heading
         }
         function FindAverage()
@@ -34,9 +45,9 @@
         Enter MArks <input type="text"> <input type="button" value="Add">
     </p>
     <input type="button" value="Show max">
-    <input type="button" value="Show min">
+    <input type="button" value="Show min" onclick="Minmarks()">
     <input type="button" value="Show average ">
-    <h1></h1>
+    <h1 id="hresult"></h1>
     <table>
         <thead>
         <tr><th>
