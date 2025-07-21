@@ -5,14 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        let users = []
-        function Adduser()
+        let users = [
+            {name:"sdf",age:56,email:"asd@gmail.com"}
+        ]
+        function Adduser(flag)
         {
+
             let txtname = document.getElementById("txtname");
             let txtemail = document.getElementById("txtemail");
             let txtage = document.getElementById("txtage")
-            let user = {name:txtname.value,age:txtage.value,email:txtemail.value};
-            users.push(user);
+            if(flag =="Add")
+            {
+                let user = {name:txtname.value,age:txtage.value,email:txtemail.value};
+                users.push(user);
+            }
+            else
+            {
+                let i = parseInt(document.getElementById("txtindex").value);
+
+                users[i].name = txtname.value
+                users[i].age = txtage.value
+                users[i].email = txtemail.value
+                document.getElementById("btnAdd").style.visibility="visible"
+                document.getElementById("btnUpdate").style.visibility="hidden"
+                //update case here
+            }
             console.log(users)
             // document.getElementById("hresult").innerHTML = JSON.stringify(users)
             txtname.value=""
@@ -24,22 +41,30 @@
         function showuser()
         {
             let tbdy = document.getElementById("tbdy");
-            let usersUI = users.map((u)=>
+            let usersUI = users.map((u,index)=>
         {
+            console.log(index)
             return `<tr>
                 <td>${u.name}</td>
                 <td>${u.age}</td>
                 <td>${u.email}</td>
-                <td><input type="button" value="Edit" onclick='editUser(${u})'/></td>
+                <td><input type="button" value="Edit" onclick='editUser(${JSON.stringify(u)},${index})'/></td>
                 <td><input type="button" value="Delete" 
                     onclick='deleteUser("${u.email}")'/></td>
                 </tr>`
         }).join("");
         tbdy.innerHTML = usersUI;
         }
-        function editUser(u)
+        function editUser(u,index)
         {
-
+            
+            document.getElementById("txtname").value = u.name
+            document.getElementById("txtage").value = u.age;
+            document.getElementById("txtemail").value = u.email
+            document.getElementById("txtindex").value = index
+            document.getElementById("btnAdd").style.visibility = "hidden"
+            document.getElementById("btnUpdate").style.visibility = "visible"
+            console.log(u.name)
         }
         function deleteUser(useremail)
         {
@@ -49,7 +74,8 @@
         }
     </script>
 </head>
-<body>
+<body onload="showuser()">
+    <input type="text" id="txtindex" style="visibility: hidden;" >
     <p>
         Name : <input type="text" id="txtname">
     </p>
@@ -59,7 +85,9 @@
     <p>
         Email: <input type="text" id="txtemail">
     </p>
-    <input type="button" value="Add user"  onclick="Adduser()">
+    <input type="button" value="Add user" id="btnAdd"  onclick="Adduser('Add')">
+    <input type="button" value="update user" id="btnUpdate"
+     style="visibility: hidden;"  onclick="Adduser('Update')">
     <h1 id="hresult"></h1>
     <table border="">
         <thead>

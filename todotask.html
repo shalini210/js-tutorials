@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- <script src=""></script> -->
+    <style>
+        #btnedit::before
+        {
+            content: "f00c";
+        }
+        .todotask
+        {
+            padding: 25px;
+            border:1px solid black;
+            width:50%;
+            margin-left: 25%;
+        }
+        input[type="button"] 
+        {
+            background-color: transparent;
+        }
+        button
+        {
+            background-color: transparent;
+            border: none;
+
+        }
+    </style>
+    <script>
+        let tasks = [];
+        function AddTask()
+        {
+            let btn = document.getElementById("btnAdd");
+            let txttask = document.getElementById("txttask");
+            let task = txttask.value;
+
+            if(btn.value=="Add")
+            {
+                tasks.push({taskname:task,status:"Pending"})
+            }
+            else
+            {
+                //update case here
+                let index = parseInt(document.getElementById("txtindex").value) 
+                tasks[index].taskname =task; 
+                btn.value="Add"
+            }
+            txttask.value=""
+            txttask.focus()
+            showTasks()
+        }
+        function editTask(i)
+        {
+            txttask.value= tasks[i].taskname;
+            document.getElementById("btnAdd").value="Update";
+            document.getElementById("txtindex").value= i ;
+        }
+        function doneTask(i)
+        {
+            tasks[i].status = "Done"
+            showTasks()
+        }
+        function deleteTask(i)
+        {
+            tasks.splice(i,1)
+            showTasks()
+
+        }
+        function showTasks()
+        {
+            let tbdy = document.getElementById("tbody");
+            tbdy.innerHTML = "";
+            let colorname = "greenyellow"
+            let uiary = tasks.map((task,index)=>
+        {
+            if(task.status=="Pending")
+            {
+                colorname="orange"
+            }
+            else
+            {
+                colorname="greenyellow"
+            }
+            return `<tr style="background-color:${colorname}">
+                <td>${task.taskname}</td>
+                <td>${task.status}</td>
+                <td>
+                    <button onclick='editTask(${index})'>
+                        <i class="fa-solid fa-pen-to-square" style="color:blue"></i>
+                        </button>
+                    |
+                    
+                    <button
+                     onclick='doneTask(${index})'> 
+                     <i class="fa-solid fa-check" style="color:green"></i>
+                     </button>
+                    </td>
+                    <td>
+    <button onclick='deleteTask(${index})'>
+        <i class="fa-solid fa-trash" style="color:red"></i>
+        </button>
+                        </td>
+                </tr>`
+        }).join("")
+        tbdy.innerHTML =uiary
+        }
+    </script>
+</head>
+<body>
+   
+    <div class="todotask">
+        <input type="text" id="txtindex" style="height: 0px;width: 0px;visibility: hidden;" >
+        <input type="text" id="txttask" >
+        <input type="button" value="Add" id="btnAdd" onclick="AddTask()">
+    
+    <table border="">
+        <thead>
+            <tr>
+                <th>TAsk</th>
+                <th>Status</th>
+                <th>Edit | Done</th>
+                <th>Delete</th>
+
+            </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>

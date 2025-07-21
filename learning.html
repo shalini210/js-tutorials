@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NovaCorp Intranet</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --bg: #f4f4f9;
+      --text: #333;
+      --card-bg: #fff;
+    }
+
+    [data-theme="dark"] {
+      --bg: #1f2937;
+      --text: #f9fafb;
+      --card-bg: #374151;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    ul {
+      padding-left: 1rem;
+    }
+
+    .spotlight img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-right: 1rem;
+    }
+
+    .spotlight {
+      display: flex;
+      align-items: center;
+    }
+
+    .tools button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      margin: 0.3rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .tools button:hover {
+      background: #4338ca;
+    }
+
+    .topbar input {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .topbar {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .toggle-dark {
+      cursor: pointer;
+      background: transparent;
+      color: white;
+      border: 1px solid white;
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>NovaCorp Intranet</h1>
+    <div class="topbar">
+      <input type="text" placeholder="Search resources..." />
+      <button class="toggle-dark" onclick="toggleTheme()">🌙 Toggle</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>📅 Upcoming Events</h2>
+      <ul>
+        <li><strong>July 25:</strong> Monthly Townhall Meeting</li>
+        <li><strong>Aug 3:</strong> Team Building Retreat</li>
+        <li><strong>Aug 15:</strong> Independence Day Celebration</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>🌟 Team Spotlight</h2>
+      <div class="spotlight">
+        <img src="https://i.pravatar.cc/100?img=12" alt="Employee" />
+        <div>
+          <strong>Rina Sharma</strong><br />
+          Product Manager<br />
+          "Led our latest product launch with excellence!"
+        </div>
+      </div>
+    </section>
+
+    <section class="card tools">
+      <h2>🛠️ Quick Tools</h2>
+      <button>HR Portal</button>
+      <button>IT Support</button>
+      <button>Leave Request</button>
+      <button>Payroll</button>
+    </section>
+
+    <section class="card">
+      <h2>📰 Announcements</h2>
+      <ul>
+        <li><strong>New VPN Setup Guide</strong> available in IT Docs.</li>
+        <li><strong>Hybrid Work Policy</strong> updated on July 10.</li>
+        <li><strong>Refer a Friend</strong> and win exciting rewards!</li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    }
+  </script>
+
+</body>
+</html>

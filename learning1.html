@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Office Culture - CSS Art</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      font-family: monospace;
+    }
+
+    .scene {
+      position: relative;
+      width: 800px;
+      height: 400px;
+      background: #e3edf7;
+      border-top: 6px solid #cbd5e1;
+      box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Floor */
+    .floor {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      background: #d9e2ec;
+    }
+
+    /* Watercooler */
+    .cooler {
+      position: absolute;
+      left: 50px;
+      bottom: 100px;
+      width: 60px;
+      height: 160px;
+      background: #a3cef1;
+      border: 4px solid #486581;
+      border-radius: 8px;
+    }
+
+    .cooler::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 12px;
+      width: 36px;
+      height: 60px;
+      background: #dbeafe;
+      border-radius: 50% 50% 0 0;
+    }
+
+    .cooler::after {
+      content: "";
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      width: 20px;
+      height: 20px;
+      background: #486581;
+      border-radius: 50%;
+    }
+
+    /* Plant */
+    .plant {
+      position: absolute;
+      left: 150px;
+      bottom: 100px;
+      width: 40px;
+      height: 60px;
+      background: #4b5563;
+      border-radius: 5px;
+    }
+
+    .plant::before,
+    .plant::after {
+      content: "";
+      position: absolute;
+      top: -30px;
+      width: 60px;
+      height: 30px;
+      background: #65a30d;
+      border-radius: 50%;
+    }
+
+    .plant::before {
+      left: -10px;
+    }
+
+    .plant::after {
+      left: -30px;
+    }
+
+    /* Coworker 1 */
+    .person {
+      position: absolute;
+      width: 20px;
+      height: 50px;
+      background: #000;
+      border-radius: 10px;
+    }
+
+    .person.head {
+      height: 20px;
+      width: 20px;
+      background: #fcd34d;
+      border-radius: 50%;
+    }
+
+    .person1 {
+      left: 240px;
+      bottom: 100px;
+    }
+
+    .person1 .head {
+      top: -30px;
+      left: 0;
+      position: absolute;
+    }
+
+    /* Coworker 2 */
+    .person2 {
+      left: 280px;
+      bottom: 100px;
+    }
+
+    .person2 .head {
+      top: -30px;
+      left: 0;
+      position: absolute;
+    }
+
+    /* Desk */
+    .desk {
+      position: absolute;
+      right: 80px;
+      bottom: 100px;
+      width: 180px;
+      height: 20px;
+      background: #6b7280;
+    }
+
+    .desk::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      left: 10px;
+      width: 80px;
+      height: 30px;
+      background: #cbd5e1;
+      border-radius: 6px;
+    }
+
+    .keyboard {
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      width: 80px;
+      height: 10px;
+      background: #1f2937;
+    }
+
+    .coffee {
+      position: absolute;
+      top: -50px;
+      left: 110px;
+      width: 20px;
+      height: 30px;
+      background: #78350f;
+      border-radius: 0 0 5px 5px;
+    }
+
+    .coffee::after {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: 4px;
+      width: 12px;
+      height: 5px;
+      background: #fef3c7;
+      border-radius: 50%;
+    }
+
+    /* Caption */
+    .caption {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      color: #4b5563;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="floor"></div>
+    <div class="cooler"></div>
+    <div class="plant"></div>
+
+    <div class="person person1">
+      <div class="head"></div>
+    </div>
+
+    <div class="person person2">
+      <div class="head"></div>
+    </div>
+
+    <div class="desk">
+      <div class="keyboard"></div>
+      <div class="coffee"></div>
+    </div>
+
+    <div class="caption">Office Culture: Watercooler Chats & Mechanical Keyboards ☕⌨️</div>
+  </div>
+</body>
+</html>
