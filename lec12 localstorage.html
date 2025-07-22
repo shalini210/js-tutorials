@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let usersary = []
+        function addname() {
+            let name = document.getElementById("txtname").value;
+            let u = JSON.parse(localStorage.getItem("users"));
+            console.log(u)
+            if (u == null) {
+                usersary[0] = { 'username': name }
+            }
+            else {
+                usersary = u
+                usersary.push({ 'username': name })
+            }
+            localStorage.setItem("users", JSON.stringify(usersary))
+            showname()
+        }
+        function showname() {
+            let savedusers = JSON.parse(localStorage.getItem('users'))
+            // document.getElementById("duser").innerHTML = sav
+            let ui = savedusers.map((u, index) => {
+                return `<tr><td>${u.username}</td>
+                <td><input type="button" value="Delete"
+                     onclick="DeleteName(${index})"/></td></tr>`
+            }).join("")
+            document.getElementById("tbdy").innerHTML = ui
+
+        }
+        function removename() {
+            localStorage.removeItem("username")
+            showname()
+        }
+        function clearall() {
+            localStorage.clear()
+        }
+    </script>
+</head>
+
+<body onload="showname()">
+    <p>Enter name : <input type="text" id="txtname"></p>
+    <input type="button" value="setname" onclick="addname()" />
+    <!-- <input type="button" value="clearall" onclick="clearall()">
+    <input type="button" value="REmove name storage" onclick="removename()" /> -->
+    <div id="duser">
+
+    </div>
+    <table border="">
+        <thead>
+            <th>Name</th>
+            <th>
+                Delete
+            </th>
+        </thead>
+        <tbody id="tbdy">
+
+
+        </tbody>
+    </table>
+</body>
+
+</html>
